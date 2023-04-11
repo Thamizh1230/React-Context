@@ -1,6 +1,7 @@
 export const initialzevalue ={
     name:"React",
     newarr:[],
+    isLoggedin : JSON.parse(localStorage.getItem("Login")) || false,
     
 }
 
@@ -18,6 +19,12 @@ export const stateReducer=(state, action)=>{
             return{
                 ...state,
                 newarr: action.payload,
+            }
+
+        case "LOGIN":
+            return{
+                ...state,
+                isLoggedin: action.payload,
             }
         default:
             return state

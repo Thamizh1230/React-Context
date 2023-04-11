@@ -3,6 +3,7 @@ import { stateContext } from '../Context/Statecontext';
 import {useState, useContext} from 'react'
 import { useNavigate } from 'react-router-dom';
 import Log from './Log.css';
+import { type } from '@testing-library/user-event/dist/type';
 
 const Login = () => {
   const [usrname, setUserName] = useState("");
@@ -37,6 +38,11 @@ const Login = () => {
         }
 
     };
+
+    const handleLogin=()=>{
+      localStorage.setItem("Login", JSON.stringify(true));
+      dispatch({type:"LOGIN", payload:true})
+    }
   return (
     <div>
               <h2>Login Page</h2>
@@ -47,6 +53,7 @@ const Login = () => {
         <input type='submit' />
         {showerror && <p style={{color:"red"}}>{showerror}</p>}
     </form>
+    <button onClick={()=>handleLogin()}>ClickToLogin</button>
 
     </div>
          {state?.name}
