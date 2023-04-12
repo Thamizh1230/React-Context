@@ -2,6 +2,8 @@ import React ,{useContext} from 'react'
 import { stateContext } from './Context/Statecontext'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react';
+import { Button } from '@mui/material';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 
 const Home = () => {
@@ -37,6 +39,11 @@ const Home = () => {
   Nav("/form")
 
     }
+
+    const logout=()=>{
+      dispatch({type:"LOGOUT", payload: localStorage.clear()});
+    }
+
   return (
     <div>
        <table border="3"> 
@@ -66,8 +73,12 @@ const Home = () => {
        </table>
         
        <div>
-       <button onClick={()=>gotoforms()}>NavigateToForm</button>
+       <button onClick={()=>gotoforms()}>NavigateToForm</button><br /><br />
 
+       </div>
+
+       <div>
+         <Button variant="contained" color='error'size="small" onClick={()=>logout()}>Logout</Button> 
        </div>
        
     </div>
